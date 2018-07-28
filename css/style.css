@@ -1,0 +1,61 @@
+#toDoEl, #itemDescription, .addBtn {
+    margin: 5px;
+    border-radius: 3px;
+    border: 1px solid #000;
+    padding: 5px;
+}
+
+input {
+    width: 250px;
+}
+
+textarea {
+    display: block;
+    width: 300px;
+}
+
+#list {
+    list-style: none;
+}
+
+#list li {
+    max-width: 500px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+#list li button {
+    text-align: right;
+}
+
+#list li p {
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+#list li span {
+    margin: 0 5px 0 0;
+}
+
+.addBtn {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.checked {
+    color: #aaa;
+}
+
+.outdated {
+    color: rgb(194, 12, 12);
+}
+
+.editing {
+    padding: 5px;
+}

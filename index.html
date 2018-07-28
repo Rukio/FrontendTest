@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Test</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Список дел</h1>
+            <hr>
+            <input type="text" placeholder="Введите новое дело"
+                id="toDoEl">
+            <textarea id="itemDescription"
+                placeholder="Описание дела"></textarea>
+            <input type="datetime-local" id="dateTime">
+            <span class="addBtn"
+                onclick="newElement()">Добавить</span>
+        </div>
+        <hr>
+        <select id="taskFilter">
+            <option value="Все">Все</option>
+            <option value="В работе">В работе</option>
+            <option value="Выполненные">Выполненные</option>
+        </select>
+        <input id="taskDayFilter" type="date">
+        <p>
+            Заданий на этот день: <span id="taskNumber"></span>
+        </p>
+        <ul id="list">
+
+        </ul>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
