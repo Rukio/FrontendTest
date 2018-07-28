@@ -1,3 +1,7 @@
+body {
+    background-color: #eee;
+}
+
 #toDoEl, #itemDescription, .addBtn {
     margin: 5px;
     border-radius: 3px;
@@ -58,4 +62,15 @@ textarea {
 
 .editing {
     padding: 5px;
+}
+
+#warningWrapper {
+    border: 1px solid #000;
+    border-radius: 3px;
+    position: fixed;
+    bottom: 2px;
+    max-width: 400px;
+    padding: 5px;
+    transition: all 1s ease;
+    background-color: #fff;
 }

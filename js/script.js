@@ -2,6 +2,9 @@ var list = document.querySelector('ul');
 var taskFilter = document.getElementById('taskFilter');
 var taskDayFilter = document.getElementById('taskDayFilter');
 var refreshButton = document.getElementById('refresh');
+var warningWrapper = document.getElementById('warningWrapper');
+var warningTaskName = document.getElementById('warningTaskName');
+var closeWarning = document.getElementById('closeWarning');
 
 function filterUp() {
 
@@ -113,6 +116,9 @@ function filterUp() {
 
 taskFilter.onchange = filterUp;
 taskDayFilter.onchange = filterUp;
+closeWarning.addEventListener('click', function() {
+    warningWrapper.style.right = '-400px';
+});
 
 var todos;
 function toLocal() { // write the changes to the local storage
@@ -213,6 +219,9 @@ function editNote(ev) {
             }
         }
         var listItemDescFieldText = listItemDescField.value;
+
+        localStorage.removeItem(listItemTitle.innerHTML);
+        localStorage.setItem(listItemTitleFieldText, changedDate);
 
         listItemTitle.innerHTML = listItemTitleFieldText;
         listItemDate.innerHTML = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;
@@ -325,10 +334,28 @@ if(localStorage.getItem('todos')) {
 for (i = 0; i < document.querySelectorAll('.title').length; i++) {
     if(localStorage.getItem(document.querySelectorAll('.title')[i].innerHTML)) {
             var storeItemDate = new Date(localStorage.getItem(document.querySelectorAll('.title')[i].innerHTML));
+            var currentDate = new Date();
+            var warningDate = new Date(storeItemDate);
+            warningDate.setHours(warningDate.getHours() - 3);
+
+            console.log('storeItemDate =' + storeItemDate);
+            console.log('warningDate =' + warningDate);
 
             if(storeItemDate < new Date()) {
                 if (!document.querySelectorAll('.title')[i].parentNode.classList.contains('outdated'))
                     document.querySelectorAll('.title')[i].parentNode.classList.toggle('outdated');
             }
+
+            if(storeItemDate > currentDate && warningDate <= currentDate) {
+                if (!document.querySelectorAll('.title')[i].parentNode.classList.contains('warning'))
+                    document.querySelectorAll('.title')[i].parentNode.classList.toggle('warning');
+                warningTaskName.innerHTML = document.querySelectorAll('.title')[i].innerHTML;
+                warningWrapper.style.right = '2px';
+            } else {
+                if (document.querySelectorAll('.title')[i].parentNode.classList.contains('warning'))
+                    document.querySelectorAll('.title')[i].parentNode.classList.toggle('warning');
+            }
+            console.log(storeItemDate.getHours() - 3);
+            console.log(new Date().getHours());
     }
 }
