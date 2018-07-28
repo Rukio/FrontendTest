@@ -15,6 +15,10 @@ function filterUp() {
                     var day = filterDate.getDate();
                     var month = filterDate.getMonth() + 1;
                     var year = filterDate.getFullYear();
+
+                    if(day < 10) day = '0' + day;
+                    if(month < 10) month = '0' + month;
+
                     var filterDateText = day + '.' + month + '.' + year;
 
                 if(listItems[i].classList.contains('checked')) {
@@ -193,6 +197,11 @@ function editNote(ev) {
         var year = changedDate.getFullYear();
         var hours = changedDate.getHours();
         var minutes = changedDate.getMinutes();
+
+        if(day < 10) day = '0' + day;
+        if(month < 10) month = '0' + month;
+        if(hours < 10) hours = '0' + hours;
+        if(minutes < 10) minutes = '0' + minutes;
 
         if(changedDate < new Date()) {
             if(!listItem.classList.contains('outdated')) {
